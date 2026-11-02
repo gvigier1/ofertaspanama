@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OfertasPanamá</title>
+<meta name="description" content="Todas las ofertas de las tiendas de Panamá en un solo lugar: electrodomésticos, tecnología, hogar, ropa, súper y más.">
+<meta name="theme-color" content="#0057B8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ofertas">
+<script data-goatcounter="https://gvigier.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="https://gc.zgo.at/count.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* couleurs du drapeau du Panama */
+    --ink: #13233F; --bg: #F5F8FC; --paper: #FFFFFF; --line: #DCE4EF; --muted: #5B6880;
+    --blue: #0057B8; --red: #D21034; --blue-soft: #E5EEFA; --red-soft: #FDE8EB;
+    --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--body); }
+  body::before { content: ""; display: block; height: 6px; background: linear-gradient(90deg, var(--blue) 0 50%, var(--red) 50% 100%); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: max(18px, env(safe-area-inset-top)) 16px calc(32px + env(safe-area-inset-bottom)); }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+  header h1 { font: 700 1.75rem/1.1 var(--display); margin: 6px 0 4px; letter-spacing: -0.02em; display: flex; align-items: center; gap: 10px; }
+  header h1 svg { width: 1.45em; height: 1em; flex: none; border-radius: 3px; box-shadow: 0 0 0 1px var(--line); }
+  header h1 b { color: var(--blue); } header h1 b + b { color: var(--red); }
+  header p { margin: 0; color: var(--muted); }
+  .install { display: none; margin-top: 12px; background: var(--blue); color: #fff; border: 0; border-radius: 999px; padding: 8px 16px; font-weight: 600; cursor: pointer; }
+
+  .bar { position: sticky; top: 0; z-index: 5; background: var(--bg); padding: 14px 0 6px; }
+  .bar input[type=search] { width: 100%; padding: 13px 16px; border: 2px solid var(--line); border-radius: 12px; background: var(--paper); font-size: 1.05rem; }
+  .bar input[type=search]:focus { outline: none; border-color: var(--blue); }
+  .ctrl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; font-size: .88rem; color: var(--muted); }
+  .ctrl select { border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 5px 8px; font-size: .88rem; max-width: 46vw; }
+  .ctrl label { display: inline-flex; gap: 6px; align-items: center; }
+  .ctrl .n { margin-left: auto; }
+
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding: 6px 0 12px; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 13px; font-size: .88rem; cursor: pointer; white-space: nowrap; }
+  .chip small { color: var(--muted); margin-left: 4px; }
+  .chip[aria-pressed=true] { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .chip[aria-pressed=true] small { color: #DDE8F7; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; list-style: none; margin: 0; padding: 0; }
+  .card { display: flex; flex-direction: column; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; color: inherit; text-decoration: none; height: 100%; }
+  .card:hover { border-color: var(--blue); }
+  .ph { position: relative; aspect-ratio: 1; background: #fff; display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+  .ph img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+  .ph.noimg { aspect-ratio: 2.4; background: var(--blue-soft); }
+  .ph .ini { font: 600 .85rem/1.2 var(--display); color: var(--blue); text-align: center; padding: 28px 10px 6px; }
+  .pct { position: absolute; top: 8px; left: 8px; background: var(--red); color: #fff; font: 700 .9rem/1 var(--display); padding: 6px 8px; border-radius: 8px; }
+  .body { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 3px; flex: 1; }
+  .nm { font-size: .88rem; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .pr { margin-top: auto; padding-top: 4px; }
+  .pr b { font: 700 1.15rem var(--display); color: var(--blue); }
+  .pr s { color: var(--muted); font-size: .8rem; margin-left: 4px; }
+  .st { color: var(--muted); font-size: .78rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: .68rem; font-weight: 600; padding: 1px 7px; border-radius: 999px; }
+  .tag.new { background: var(--ink); color: #fff; }
+  .tag.min { background: var(--blue); color: #fff; }
+  .tag.perm { background: var(--bg); color: var(--muted); border: 1px solid var(--line); }
+  .tag.out { background: var(--red-soft); color: var(--red); }
+
+  .more { display: block; width: 100%; margin-top: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 12px; font-weight: 600; cursor: pointer; }
+  .msg { background: var(--paper); border: 1px dashed var(--line); border-radius: 14px; padding: 20px; color: var(--muted); }
+  .msg strong { color: var(--ink); }
+  footer { margin-top: 28px; color: var(--muted); font-size: .82rem; line-height: 1.5; max-width: 720px; }
+  footer p { margin: 0 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect x="15" width="15" height="10" fill="#D21034"/><rect y="10" width="15" height="10" fill="#0057B8"/><path fill="#0057B8" d="M7.5 2.2l.9 2.7h2.8l-2.3 1.7.9 2.7-2.3-1.7-2.3 1.7.9-2.7-2.3-1.7h2.8z"/><path fill="#D21034" d="M22.5 12.2l.9 2.7h2.8l-2.3 1.7.9 2.7-2.3-1.7-2.3 1.7.9-2.7-2.3-1.7h2.8z"/></svg><span><b>Ofertas</b><b>Panamá</b></span></h1>
+    <p>Todas las rebajas de las tiendas de Panamá en un solo lugar.</p>
+    <button class="install" id="install" type="button">Instalar la app</button>
+  </header>
+  <main id="view" aria-live="polite"><div class="msg" style="margin-top:16px">Cargando ofertas…</div></main>
+  <footer>
+    <p id="updated"></p>
+    <p>Precios y rebajas tomados cada noche de las tiendas en línea; pueden variar en tienda o agotarse. «Siempre en oferta» marca los productos que muestran el mismo precio rebajado desde hace más de 45 días: el precio «antes» probablemente no es real.</p>
+  </footer>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fold = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+const money = v => "$" + v.toFixed(2);
+const raiz = w => w.length > 4 ? w.replace(/(es|s)$/, "") : w;
+
+// statistiques anonymes (GoatCounter, sans cookies)
+const STANDALONE = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+const gcQueue = [];
+function stat(path, title, event = false) { gcQueue.push({ path: "ofertas/" + path, title: title || path, event }); flushStats(); }
+function flushStats() {
+  if (!window.goatcounter || !window.goatcounter.count) { setTimeout(flushStats, 1500); return; }
+  while (gcQueue.length) { try { window.goatcounter.count(gcQueue.shift()); } catch {} }
+}
+const slug = s => fold(s).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 40);
+let searchTimer = null;
+
+// filtres retenus sur ce telephone
+const pref = (() => { try { return JSON.parse(localStorage.getItem("op-pref") || "{}"); } catch { return {}; } })();
+const savePref = () => { try { localStorage.setItem("op-pref", JSON.stringify({ orden: st.orden, perm: st.perm })); } catch {} };
+const st = { q: "", tipo: "Todas", tienda: "Todas", orden: pref.orden || "desc", perm: !!pref.perm, shown: 48 };
+let DATA = null;
+
+function lista() {
+  const words = fold(st.q).split(/\s+/).filter(Boolean).map(raiz);
+  let xs = DATA.ofertas.filter(o => (st.perm || !o.perm) && (st.tienda === "Todas" || o.s === st.tienda)
+    && words.every(w => o._h.includes(w)));
+  const porTipo = new Map();
+  for (const o of xs) porTipo.set(o.t, (porTipo.get(o.t) || 0) + 1);
+  if (st.tipo !== "Todas") xs = xs.filter(o => o.t === st.tipo);
+  const ord = { desc: (a, b) => b.d - a.d, precio: (a, b) => a.p - b.p, ahorro: (a, b) => (b.pa - b.p) - (a.pa - a.p),
+                nuevas: (a, b) => (b.nueva - a.nueva) || (b.d - a.d) }[st.orden];
+  return { xs: xs.sort(ord), porTipo, total: [...porTipo.values()].reduce((a, b) => a + b, 0) };
+}
+
+function card(o) {
+  const S = DATA.tiendas;
+  return `<li><a class="card" href="${esc(o.url || "#")}" target="_blank" rel="noopener" data-s="${esc(o.s)}">
+    <div class="ph${o.img ? "" : " noimg"}">${o.img ? `<img src="${esc(o.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('noimg');this.replaceWith(Object.assign(document.createElement('span'),{className:'ini',textContent:this.dataset.t}))" data-t="${esc(o.t)}">` : `<span class="ini">${esc(o.t)}</span>`}
+      <span class="pct">−${o.d}%</span></div>
+    <div class="body">
+      <span class="tags">${o.nueva ? '<span class="tag new">Nueva</span>' : ""}${o.min30 ? '<span class="tag min">Más bajo en 30 días</span>' : ""}${o.perm ? '<span class="tag perm">Siempre en oferta</span>' : ""}${o.stock === 0 ? '<span class="tag out">Agotado</span>' : ""}</span>
+      <span class="nm">${esc(o.n)}</span>
+      <span class="pr"><b>${money(o.p)}</b><s>${money(o.pa)}</s></span>
+      <span class="st">${esc(S[o.s] || o.s)}</span>
+    </div></a></li>`;
+}
+
+function render(keepFocus) {
+  const { xs, porTipo, total } = lista();
+  const S = DATA.tiendas;
+  const tipos = [...porTipo.entries()].sort((a, b) => b[1] - a[1]);
+  const tiendas = [...new Set(DATA.ofertas.map(o => o.s))].sort((a, b) => (S[a] || a).localeCompare(S[b] || b, "es"));
+  $("#view").innerHTML = `
+    <div class="bar">
+      <input type="search" id="q" value="${esc(st.q)}" placeholder="Buscar: lavadora, laptop, zapatillas, arroz…" aria-label="Buscar oferta" autocomplete="off">
+      <div class="ctrl">
+        <select id="tienda" aria-label="Tienda"><option value="Todas">Todas las tiendas</option>${tiendas.map(t => `<option value="${esc(t)}"${t === st.tienda ? " selected" : ""}>${esc(S[t] || t)}</option>`).join("")}</select>
+        <select id="orden" aria-label="Ordenar">${[["desc", "Mayor descuento"], ["ahorro", "Mayor ahorro en $"], ["precio", "Menor precio"], ["nuevas", "Nuevas primero"]].map(([v, l]) => `<option value="${v}"${v === st.orden ? " selected" : ""}>${l}</option>`).join("")}</select>
+        <label><input type="checkbox" id="perm"${st.perm ? " checked" : ""}> Ver «siempre en oferta»</label>
+        <span class="n">${xs.length.toLocaleString("es-PA")} ofertas</span>
+      </div>
+    </div>
+    <div class="chips" role="group" aria-label="Tipo de artículo">
+      <button class="chip" type="button" data-t="Todas" aria-pressed="${st.tipo === "Todas"}">Todas<small>${total.toLocaleString("es-PA")}</small></button>
+      ${tipos.map(([t, n]) => `<button class="chip" type="button" data-t="${esc(t)}" aria-pressed="${t === st.tipo}">${esc(t)}<small>${n.toLocaleString("es-PA")}</small></button>`).join("")}
+    </div>
+    ${xs.length ? `<ul class="grid">${xs.slice(0, st.shown).map(card).join("")}</ul>
+      ${xs.length > st.shown ? `<button class="more" id="more" type="button">Ver más ofertas (${(xs.length - st.shown).toLocaleString("es-PA")})</button>` : ""}`
+    : `<div class="msg"><strong>No hay ofertas${st.q ? ` para «${esc(st.q)}»` : ""}.</strong><br>Prueba con otra palabra u otra tienda. Revisamos las tiendas cada noche.</div>`}`;
+  $("#q").addEventListener("input", e => {
+    st.q = e.target.value; st.shown = 48; render(true);
+    clearTimeout(searchTimer);
+    if (slug(st.q).length >= 3) searchTimer = setTimeout(() => stat("buscar/" + slug(st.q), st.q, true), 1500);
+  });
+  if (keepFocus) { const i = $("#q"); i.focus(); i.setSelectionRange(st.q.length, st.q.length); }
+  $("#tienda").addEventListener("change", e => { st.tienda = e.target.value; st.shown = 48; render(); stat("tienda/" + slug(S[st.tienda] || st.tienda), st.tienda, true); });
+  $("#orden").addEventListener("change", e => { st.orden = e.target.value; savePref(); render(); });
+  $("#perm").addEventListener("change", e => { st.perm = e.target.checked; savePref(); render(); });
+  $$(".chip").forEach(b => b.addEventListener("click", () => { st.tipo = b.dataset.t; st.shown = 48; render(); stat("tipo/" + slug(st.tipo), st.tipo, true); }));
+  const more = $("#more");
+  if (more) more.addEventListener("click", () => { st.shown += 48; render(); });
+  $$(".card").forEach(a => a.addEventListener("click", () => stat("ir/" + slug(S[a.dataset.s] || a.dataset.s), "Ir a " + a.dataset.s, true)));
+}
+
+async function load() {
+  stat(STANDALONE ? "inicio-app" : "inicio", STANDALONE ? "Inicio (app instalada)" : "Inicio (navegador)");
+  try {
+    const r = await fetch("ofertas.json", { cache: "no-cache" });
+    DATA = await r.json();
+    for (const o of DATA.ofertas) o._h = fold(o.n + " " + o.t + " " + (DATA.tiendas[o.s] || ""));
+    const d = new Date(DATA.generado);
+    $("#updated").textContent = `Ofertas actualizadas: ${d.toLocaleDateString("es-PA", { day: "numeric", month: "long" })}, ${d.toLocaleTimeString("es-PA", { hour: "2-digit", minute: "2-digit" })} · ${new Set(DATA.ofertas.map(o => o.s)).size} tiendas`;
+    render();
+  } catch {
+    $("#view").innerHTML = `<div class="msg" style="margin-top:16px"><strong>No se pudieron cargar las ofertas.</strong><br>Revisa tu conexión a internet y vuelve a abrir la app.</div>`;
+  }
+}
+
+let deferred = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferred = e; $("#install").style.display = "inline-block"; });
+$("#install").addEventListener("click", async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice; deferred = null; $("#install").style.display = "none"; });
+window.addEventListener("appinstalled", () => stat("instalada", "App instalada", true));
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
+load();
+</script>
+</body>
+</html>
